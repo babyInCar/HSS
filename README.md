@@ -1,6 +1,7 @@
 HSS(House Storage System)
 
-基于Python3.11和Fastapi0.11.0实现
+基于`python3.11`和`Fastapi0.11.0`实现
+
 
 ## 主要功能：
 <hr/>
@@ -14,22 +15,24 @@ HSS(House Storage System)
 <hr/>
 mysql客户端使用了pymysql，具体请参考 pypi 查看安装前的准备。
 
-使用pip安装所需Python库： pip install -Ur requirements.txt
+使用pip安装所需Python库： `pip install -r requirements.txt`
 
 如果你没有pip，使用如下方式安装：
 
-OS X / Linux 电脑，终端下执行:
+- OS X / Linux 电脑，终端下执行:
 
 curl http://peak.telecommunity.com/dist/ez_setup.py | python
 curl https://bootstrap.pypa.io/get-pip.py | python
 
-Windows电脑
+- Windows电脑
 下载 http://peak.telecommunity.com/dist/ez_setup.py 和 https://raw.github.com/pypa/pip/master/contrib/get-pip.py 这两个文件，双击运行。
 
 ## 运行
 <hr/>
 修改settigs.py中的数据库配置信息，如下所示
-"connections": {
+
+```python
+ "connections": {
         'default': {
             'engine': 'tortoise.backends.mysql',
             'credentials': {
@@ -45,14 +48,19 @@ Windows电脑
             }
         }
         }
+```
 
  ## 创建数据库
  Mysql中执行
+```sql
  CREATA database `fastapi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+```
 
 然后终端下执行(在执行之前确保已经安装了aerich)：
+```bash
 aerich init -t settings.TORTOISE_ORM
 aerich init-db
+```
 
 ## 开始运行
 执行 uvicorn main:app --reload
