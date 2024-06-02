@@ -29,10 +29,10 @@ async def getGoodsByCategoryId(category_id: int):
 
 class GoodsIn(BaseModel):
     name: str
-    category_id: int
+    category_id_id: int     # 如果是外键的话，必须要在字段后面`_id`才能写进数据表中
     is_deleted: bool = False
     buy_date: date
-    location: int
+    location_id: int
 
 
 GoodRead = pydantic_model_creator(
@@ -52,9 +52,12 @@ async def createGood(good_in: GoodsIn):
     """创建某一个商品  Ask:是否可以批量创建呢 """
     # await Goods.create(good_in.dict())
     good = await Goods.create(
-        **good_in.dict(
-            exclude_unset=True,
-        )
+        # name=good_in.name,
+        # category_id=good_in.category_id,
+        # buy_date=good_in.buy_date,
+        # is_deleted=good_in.is_deleted,
+        # location=good_in.location
+        **good_in.dict()
     )
     return good
 
