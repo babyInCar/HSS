@@ -29,3 +29,13 @@ TORTOISE_ORM = {
         'use_tz': False,
         'timezone': 'Asia/Shanghai'
     }
+
+CHANNEL_MAP = {
+    1: '京东',
+    2: '淘宝',
+    3: '支付宝',
+    4: '小程序',
+    5: '抖音',
+    6: '拼多多'
+}
+
